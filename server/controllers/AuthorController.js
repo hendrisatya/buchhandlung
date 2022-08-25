@@ -3,7 +3,9 @@ const { author } = require("../models");
 class AuthorController {
   static async getAuthors(req, res) {
     try {
-      let authors = await author.findAll();
+      let authors = await author.findAll({
+        order: [["id", "asc"]],
+      });
       res.json(authors);
     } catch (err) {
       res.json(err);
