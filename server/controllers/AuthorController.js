@@ -12,6 +12,16 @@ class AuthorController {
     }
   }
 
+  static async getAuthorInformation(req, res) {
+    try {
+      const id = +req.params.id;
+      let result = await author.findByPk(id);
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
   static async add(req, res) {
     try {
       const { name, dateOfBirth, city } = req.body;

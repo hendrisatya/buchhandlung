@@ -7,4 +7,6 @@ authorRoute.post("/add", AuthorController.add);
 authorRoute.post("/edit/:id", AuthorController.edit);
 authorRoute.get("/delete/:id", AuthorController.delete);
 
+authorRoute.get("/:id", AuthorController.getAuthorInformation);
+
 module.exports = authorRoute;
