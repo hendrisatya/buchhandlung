@@ -16,7 +16,10 @@ import ListCategories from "./Categories/ListCategories";
 import AddCategory from "./Categories/AddCategory";
 import EditCategory from "./Categories/EditCategory";
 
-import Book from "./Book";
+import Book from "./Books/Book";
+import ListBooks from "./Books/ListBook";
+import AddBook from "./Books/AddBook";
+import EditBook from "./Books/EditBook";
 
 export {
   HomePage,
@@ -33,4 +36,7 @@ export {
   AddCategory,
   EditCategory,
   Book,
+  ListBooks,
+  AddBook,
+  EditBook,
 };

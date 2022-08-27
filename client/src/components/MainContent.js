@@ -15,6 +15,9 @@ import {
   AddCategory,
   EditCategory,
   Book,
+  ListBooks,
+  AddBook,
+  EditBook,
 } from "../pages";
 
 const MainContent = () => {
@@ -46,7 +49,13 @@ const MainContent = () => {
           </Route>
         </Route>
 
-        <Route path="books" element={<Book></Book>}></Route>
+        <Route path="books" element={<Book></Book>}>
+          <Route path="" element={<ListBooks></ListBooks>}></Route>
+          <Route path="add" element={<AddBook></AddBook>}></Route>
+          <Route path="edit">
+            <Route path=":id" element={<EditBook></EditBook>}></Route>
+          </Route>
+        </Route>
       </Routes>
     </div>
   );

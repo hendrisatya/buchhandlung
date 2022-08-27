@@ -12,6 +12,16 @@ class BookController {
     }
   }
 
+  static async getBookInformation(req, res) {
+    try {
+      const id = +req.params.id;
+      let result = await book.findByPk(id);
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
   static async add(req, res) {
     try {
       const {

@@ -1,16 +1,16 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const URL = "http://localhost:3000/authors";
+const URL = "http://localhost:3000/books";
 
-const getAuthors = async (cb) => {
+const getBooks = async (cb) => {
   try {
-    let authors = await axios({
+    let books = await axios({
       method: "GET",
       url: URL,
     });
-    cb(authors.data);
-    console.log(authors);
+    cb(books.data);
+    // console.log(books);
   } catch (err) {
     console.log(err);
   }
@@ -24,21 +24,21 @@ const dateTruncateHandler = (str) => {
   }
 };
 
-const add = async (author) => {
+const add = async (book) => {
   try {
     let result = await axios({
       method: "POST",
       url: URL + "/add",
-      data: author,
+      data: book,
     });
 
-    Swal.fire("Add author", "Author has been added", "success");
+    Swal.fire("Add book", "Book has been added", "success");
   } catch (err) {
     console.log(err);
   }
 };
 
-const deleteAuthor = async (id) => {
+const deleteBook = async (id) => {
   try {
     Swal.fire({
       title: "Are you sure?",
@@ -62,7 +62,7 @@ const deleteAuthor = async (id) => {
   }
 };
 
-const infoAuthor = async (id, cb) => {
+const infoBook = async (id, cb) => {
   try {
     let result = await axios({
       method: "GET",
@@ -74,16 +74,16 @@ const infoAuthor = async (id, cb) => {
   }
 };
 
-const editAuthor = async (id, author) => {
+const editBook = async (id, book) => {
   try {
     let result = await axios({
       method: "PUT",
       url: URL + "/edit/" + id,
-      data: author,
+      data: book,
     });
     Swal.fire(
-      `Edit author ${id}`,
-      `Author with id: ${id} has been updated`,
+      `Edit book ${id}`,
+      `Book with id: ${id} has been updated`,
       "success"
     );
   } catch (err) {
@@ -91,11 +91,4 @@ const editAuthor = async (id, author) => {
   }
 };
 
-export {
-  getAuthors,
-  dateTruncateHandler,
-  add,
-  deleteAuthor,
-  infoAuthor,
-  editAuthor,
-};
+export { getBooks, dateTruncateHandler, add, deleteBook, infoBook, editBook };

@@ -1,4 +1,4 @@
-const { author } = require("../models");
+const { author, book } = require("../models");
 
 class AuthorController {
   static async getAuthors(req, res) {
@@ -59,7 +59,8 @@ class AuthorController {
   static async delete(req, res) {
     try {
       const id = +req.params.id;
-      let result = await author.destroy({ where: { id } });
+      let resultAuthor = await author.destroy({ where: { id } });
+      let resultBook = await book.destroy({ where: { authorId: id } });
       result == 1
         ? res.json({ message: `Author with id: ${id} has been deleted!` })
         : res.json({ message: `Author with id: ${id} is not found!` });

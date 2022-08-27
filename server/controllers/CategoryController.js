@@ -1,4 +1,4 @@
-const { category } = require("../models");
+const { category, book } = require("../models");
 
 class CategoryController {
   static async getCategories(req, res) {
@@ -56,13 +56,11 @@ class CategoryController {
     try {
       const id = +req.params.id;
       const { name } = req.body;
-      let result = await category.destroy(
-        {
-          name,
-        },
-        { where: { id } }
-      );
-      result == 1
+      let resultCategory = await category.destroy({ where: { id } });
+      let resultBook = await book.destroy({
+        where: { categoryId: id },
+      });
+      resultCategory == 1
         ? res.json({ message: `Publisher with id: ${id} has been deleted!` })
         : res.json({ message: `Publisher with id: ${id} is not found!` });
     } catch (err) {

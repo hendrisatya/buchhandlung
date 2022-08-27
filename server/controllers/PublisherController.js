@@ -1,4 +1,4 @@
-const { publisher } = require("../models");
+const { publisher, book } = require("../models");
 
 class PublisherController {
   static async getPublishers(req, res) {
@@ -65,10 +65,11 @@ class PublisherController {
   static async delete(req, res) {
     try {
       const id = +req.params.id;
-      let result = await publisher.destroy({
+      let resultPublisher = await publisher.destroy({
         where: { id },
       });
-      result == 1
+      let resultBook = await book.destroy({ where: { publisherId: id } });
+      resultPublisher == 1
         ? res.json({ message: `Publisher with id: ${id} has been deleted!` })
         : res.json({ message: `Publisher with id: ${id} is not found!` });
     } catch (err) {
