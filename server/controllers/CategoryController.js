@@ -12,6 +12,16 @@ class CategoryController {
     }
   }
 
+  static async getCategoryInformation(req, res) {
+    try {
+      const id = +req.params.id;
+      let result = await category.findByPk(id);
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
   static async add(req, res) {
     try {
       const { name } = req.body;

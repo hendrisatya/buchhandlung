@@ -12,6 +12,16 @@ class PublisherController {
     }
   }
 
+  static async getPublisherInformation(req, res) {
+    try {
+      const id = +req.params.id;
+      let result = await publisher.findByPk(id);
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
   static async add(req, res) {
     try {
       const { name, founded, countryOfOrigin, headquarter, homePage } =
