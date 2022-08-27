@@ -7,6 +7,8 @@ import {
 import LoadingBar from "../../helpers/LoadingBar";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { MdEditNote, MdDeleteForever } from "react-icons/md";
+import "bootstrap/dist/css/bootstrap.css";
 
 const ListBooks = () => {
   const [books, setBooks] = useState([]);
@@ -27,7 +29,7 @@ const ListBooks = () => {
       <div className="row my-3 text-center">
         <div className="col-9 mx-auto">
           <div className="w-100">
-            <div className="float-end">
+            <div className="float">
               <Link to="/books/add" className="btn btn-sm btn-primary">
                 <span className="me-2">
                   <FiPlus></FiPlus>
@@ -37,21 +39,8 @@ const ListBooks = () => {
               <hr />
             </div>
             <div className="w-100">
-              <table className="table table-bordered">
-                <thead>
-                  <tr className="table-primary">
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Synopsis</th>
-                    <th>Price</th>
-                    <th>Publication Year</th>
-                    <th>Category</th>
-                    <th>Author</th>
-                    <th>Publisher</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <div className="">
+                <div className="row">
                   {books.length > 0 ? (
                     books.map((book) => {
                       const {
@@ -63,39 +52,63 @@ const ListBooks = () => {
                         categoryId,
                         authorId,
                         publisherId,
+                        image,
                       } = book;
                       return (
-                        <tr key={id}>
-                          <td>{id}</td>
-                          <td>{title}</td>
-                          <td>{synopsis}</td>
-                          <td>{price}</td>
-                          <td>{dateTruncateHandler(publicationYear)}</td>
-                          <td>{categoryId}</td>
-                          <td>{authorId}</td>
-                          <td>{publisherId}</td>
-                          <td>
-                            <Link
-                              to={`/books/edit/${id}`}
-                              className="btn btn-sm btn-info"
-                            >
-                              Edit
-                            </Link>
-                            <button
-                              onClick={() => deletehandler(+id)}
-                              className="btn btn-sm btn-danger"
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
+                        <div
+                          className="card mx-auto mb-3"
+                          style={{ width: "400px" }}
+                        >
+                          <div className="card-horizontal">
+                            <div className="img-square-wrapper">
+                              <img
+                                className="kartu-img"
+                                src={image}
+                                alt="gambar"
+                              />
+                            </div>
+                            <div className="card-body">
+                              <h4 className="card-title">{title}</h4>
+                              <p class="card-text">
+                                Synopsis: {synopsis}
+                                <br />
+                                Price: {price} USD
+                                <br />
+                                Released: {dateTruncateHandler(publicationYear)}
+                                <br />
+                                Category: {categoryId}
+                                <br />
+                                Author: {authorId}
+                                <br />
+                                Publisher:{publisherId}
+                                <br />
+                              </p>
+                            </div>
+                          </div>
+                          <div className="card-footer">
+                            <small className="text-muted float-end">
+                              <Link
+                                to={`/books/edit/${id}`}
+                                className="btn btn-sm btn-link"
+                              >
+                                <MdEditNote></MdEditNote>
+                              </Link>
+                              <button
+                                onClick={() => deletehandler(+id)}
+                                className="btn btn-sm btn-link"
+                              >
+                                <MdDeleteForever></MdDeleteForever>
+                              </button>
+                            </small>
+                          </div>
+                        </div>
                       );
                     })
                   ) : (
                     <LoadingBar></LoadingBar>
                   )}
-                </tbody>
-              </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

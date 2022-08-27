@@ -24,11 +24,12 @@ class AuthorController {
 
   static async add(req, res) {
     try {
-      const { name, dateOfBirth, city } = req.body;
+      const { name, dateOfBirth, city, image } = req.body;
       let result = await author.create({
         name,
         dateOfBirth,
         city,
+        image,
       });
       res.json(result);
     } catch (err) {
@@ -39,12 +40,13 @@ class AuthorController {
   static async edit(req, res) {
     try {
       const id = +req.params.id;
-      const { name, dateOfBirth, city } = req.body;
+      const { name, dateOfBirth, city, image } = req.body;
       let result = await author.update(
         {
           name,
           dateOfBirth,
           city,
+          image,
         },
         { where: { id } }
       );

@@ -11,6 +11,7 @@ const AddBook = () => {
     categoryId: "",
     authorId: "",
     publisherId: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -83,6 +84,14 @@ const AddBook = () => {
               onChange={(e) =>
                 setForm({ ...form, publisherId: e.target.value })
               }
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>

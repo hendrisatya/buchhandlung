@@ -11,6 +11,7 @@ const EditBook = () => {
     categoryId: "",
     authorId: "",
     publisherId: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -27,6 +28,7 @@ const EditBook = () => {
         categoryId: result.categoryId,
         authorId: result.authorId,
         publisherId: result.publisherId,
+        image: result.image,
       });
     });
   };
@@ -110,6 +112,15 @@ const EditBook = () => {
               onChange={(e) =>
                 setForm({ ...form, publisherId: e.target.value })
               }
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>

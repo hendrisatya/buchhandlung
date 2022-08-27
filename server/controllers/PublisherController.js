@@ -24,7 +24,7 @@ class PublisherController {
 
   static async add(req, res) {
     try {
-      const { name, founded, countryOfOrigin, headquarter, homePage } =
+      const { name, founded, countryOfOrigin, headquarter, homePage, image } =
         req.body;
       let result = await publisher.create({
         name,
@@ -32,6 +32,7 @@ class PublisherController {
         countryOfOrigin,
         headquarter,
         homePage,
+        image,
       });
       res.json(result);
     } catch (err) {
@@ -42,7 +43,7 @@ class PublisherController {
   static async edit(req, res) {
     try {
       const id = +req.params.id;
-      const { name, founded, countryOfOrigin, headquarter, homePage } =
+      const { name, founded, countryOfOrigin, headquarter, homePage, image } =
         req.body;
       let result = await publisher.update(
         {
@@ -51,6 +52,7 @@ class PublisherController {
           countryOfOrigin,
           headquarter,
           homePage,
+          image,
         },
         { where: { id } }
       );

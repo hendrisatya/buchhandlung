@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const EditCategory = () => {
   const [form, setForm] = useState({
     name: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -15,6 +16,7 @@ const EditCategory = () => {
     infoCategory(+id, (result) => {
       setForm({
         name: result.name,
+        image: result.image,
       });
     });
   };
@@ -40,6 +42,15 @@ const EditCategory = () => {
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>

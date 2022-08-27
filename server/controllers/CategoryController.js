@@ -24,9 +24,10 @@ class CategoryController {
 
   static async add(req, res) {
     try {
-      const { name } = req.body;
+      const { name, image } = req.body;
       let result = await category.create({
         name,
+        image,
       });
       res.json(result);
     } catch (err) {
@@ -37,16 +38,17 @@ class CategoryController {
   static async edit(req, res) {
     try {
       const id = +req.params.id;
-      const { name } = req.body;
+      const { name, image } = req.body;
       let result = await category.update(
         {
           name,
+          image,
         },
         { where: { id } }
       );
       result == 1
-        ? res.json({ message: `Publisher with id: ${id} has been updated!` })
-        : res.json({ message: `Publisher with id: ${id} is not found!` });
+        ? res.json({ message: `Category with id: ${id} has been updated!` })
+        : res.json({ message: `Category with id: ${id} is not found!` });
     } catch (err) {
       res.json(err);
     }
@@ -55,14 +57,13 @@ class CategoryController {
   static async delete(req, res) {
     try {
       const id = +req.params.id;
-      const { name } = req.body;
       let resultCategory = await category.destroy({ where: { id } });
       let resultBook = await book.destroy({
         where: { categoryId: id },
       });
       resultCategory == 1
-        ? res.json({ message: `Publisher with id: ${id} has been deleted!` })
-        : res.json({ message: `Publisher with id: ${id} is not found!` });
+        ? res.json({ message: `Category with id: ${id} has been deleted!` })
+        : res.json({ message: `Category with id: ${id} is not found!` });
     } catch (err) {
       res.json(err);
     }

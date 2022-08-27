@@ -9,6 +9,7 @@ const EditPublisher = () => {
     countryOfOrigin: "",
     headquarter: "",
     homePage: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -23,6 +24,7 @@ const EditPublisher = () => {
         countryOfOrigin: result.countryOfOrigin,
         headquarter: result.headquarter,
         homePage: result.homePage,
+        image: result.image,
       });
     });
   };
@@ -88,6 +90,15 @@ const EditPublisher = () => {
             <input
               value={form.homePage}
               onChange={(e) => setForm({ ...form, homePage: e.target.value })}
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>

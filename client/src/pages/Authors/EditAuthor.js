@@ -7,6 +7,7 @@ const EditAuthor = () => {
     name: "",
     dateOfBirth: "",
     city: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -19,6 +20,7 @@ const EditAuthor = () => {
         name: result.name,
         dateOfBirth: result.dateOfBirth,
         city: result.city,
+        image: result.image,
       });
     });
   };
@@ -64,6 +66,15 @@ const EditAuthor = () => {
             <input
               value={form.city}
               onChange={(e) => setForm({ ...form, city: e.target.value })}
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>

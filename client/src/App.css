@@ -21,3 +21,15 @@ body {
 .home-title {
   font-weight: bold;
 }
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.kartu-img {
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 250px;
+}

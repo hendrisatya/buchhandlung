@@ -9,6 +9,7 @@ const AddPublisher = () => {
     countryOfOrigin: "",
     headquarter: "",
     homePage: "",
+    image: "",
   });
 
   const navigation = useNavigate();
@@ -65,6 +66,14 @@ const AddPublisher = () => {
             <label>Homepage: </label>
             <input
               onChange={(e) => setForm({ ...form, homePage: e.target.value })}
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Image: </label>
+            <input
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
               type="text"
               className="form-control"
             ></input>
