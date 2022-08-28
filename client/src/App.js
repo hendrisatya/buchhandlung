@@ -21,8 +21,8 @@ function App() {
   // );
 
   return (
-    <div className="main-page container-fluid">
-      <Banner></Banner>
+    <div className="w-auto">
+      {/* <Banner></Banner> */}
       <NavbarMenu></NavbarMenu>
       <MainContent></MainContent>
     </div>

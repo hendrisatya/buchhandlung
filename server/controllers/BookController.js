@@ -1,10 +1,11 @@
-const { book } = require("../models");
+const { book, category, author, publisher } = require("../models");
 
 class BookController {
   static async getBooks(req, res) {
     try {
       let books = await book.findAll({
         order: [["id", "asc"]],
+        include: [category, author, publisher],
       });
       res.json(books);
     } catch (err) {
@@ -44,6 +45,7 @@ class BookController {
         authorId,
         publisherId,
       });
+
       res.json(result);
     } catch (err) {
       res.json(err);

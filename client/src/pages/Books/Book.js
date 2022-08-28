@@ -6,7 +6,7 @@ const Book = () => {
     <div className="my-3">
       <div className="w-100 my-3 text-center">
         <div className="flex">
-          <h3>Book Data</h3>
+          <h3>List of available books.</h3>
         </div>
       </div>
       <Outlet></Outlet>

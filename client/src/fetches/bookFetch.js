@@ -10,7 +10,6 @@ const getBooks = async (cb) => {
       url: URL,
     });
     cb(books.data);
-    // console.log(books);
   } catch (err) {
     console.log(err);
   }
@@ -21,6 +20,18 @@ const dateTruncateHandler = (str) => {
     return str.substr(0, 10);
   } else {
     return "";
+  }
+};
+
+const addPage = async (cb2) => {
+  try {
+    let categories = await axios({
+      method: "GET",
+      url: URL + "/add",
+    });
+    cb2(categories);
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -91,4 +102,12 @@ const editBook = async (id, book) => {
   }
 };
 
-export { getBooks, dateTruncateHandler, add, deleteBook, infoBook, editBook };
+export {
+  getBooks,
+  dateTruncateHandler,
+  add,
+  deleteBook,
+  infoBook,
+  editBook,
+  addPage,
+};

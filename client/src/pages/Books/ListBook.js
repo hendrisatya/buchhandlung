@@ -24,7 +24,10 @@ const ListBooks = () => {
   return (
     <>
       <div className="flex text-center">
-        <p>List of available books.</p>
+        <p>
+          “A reader lives a thousand lives before he dies, said Jojen. The man
+          who never reads lives only one.” ― George R.R. Martin
+        </p>
       </div>
       <div className="row my-3 text-center">
         <div className="col-9 mx-auto">
@@ -49,13 +52,11 @@ const ListBooks = () => {
                         synopsis,
                         price,
                         publicationYear,
-                        categoryId,
-                        authorId,
-                        publisherId,
                         image,
                       } = book;
                       return (
                         <div
+                          key={id}
                           className="card mx-auto mb-3"
                           style={{ width: "400px" }}
                         >
@@ -69,18 +70,35 @@ const ListBooks = () => {
                             </div>
                             <div className="card-body">
                               <h4 className="card-title">{title}</h4>
-                              <p class="card-text">
-                                Synopsis: {synopsis}
+                              <p className="card-text">
+                                {/* <b>Synopsis:</b> {synopsis}
+                                <br /> */}
+                                <b>Price: </b>
+                                {price} USD
                                 <br />
-                                Price: {price} USD
+                                <b>Released:</b>{" "}
+                                {dateTruncateHandler(publicationYear)}
                                 <br />
-                                Released: {dateTruncateHandler(publicationYear)}
+                                <b>Category:</b>{" "}
+                                {book.categoryId
+                                  ? book.category
+                                    ? book.category.name
+                                    : "-"
+                                  : "-"}
                                 <br />
-                                Category: {categoryId}
+                                <b>Author:</b>{" "}
+                                {book.authorId
+                                  ? book.author
+                                    ? book.author.name
+                                    : "-"
+                                  : "-"}
                                 <br />
-                                Author: {authorId}
-                                <br />
-                                Publisher:{publisherId}
+                                <b>Publisher:</b>{" "}
+                                {book.publisherId
+                                  ? book.publisher
+                                    ? book.publisher.name
+                                    : "-"
+                                  : "-"}
                                 <br />
                               </p>
                             </div>
